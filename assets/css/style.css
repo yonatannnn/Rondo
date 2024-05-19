@@ -348,6 +348,16 @@ h6,
   column-gap: 10px;
 }
 
+#logo-image{
+  width: 50px;
+  height: 100px;
+}
+
+#logo-text{
+  font-size: 20px;
+  font-weight: bold;
+}
+
 #hero::after {
   content: "";
   position: absolute;

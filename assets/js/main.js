@@ -1,17 +1,44 @@
-/**
-* Template Name: Moderna
-* Template URL: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/
-* Updated: Mar 17 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+emailjs.init("Ra67BDBPZcnBt_DCM");
+function sendMail() {
+  // Get form data
+  const fullname = document.getElementById("fullname").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const subject = document.getElementById("subject").value;
+  const message = document.getElementById("message").value;
+
+  const params = {
+    from_name: fullname,
+    email: email,
+    phone: phone,
+    subject: subject,
+    message: message
+  };
+  console.log(params);
+  const serviceID = "service_99879p7";
+  const templateID = "template_c8ap7o3";
+
+  emailjs.send(serviceID, templateID, params)
+    .then(res => {
+      console.log(res);
+      alert("Your message sent successfully");
+      document.getElementById("fullname").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("phone").value = "";
+      document.getElementById("subject").value = "";
+      document.getElementById("message").value = "";
+    })
+    .catch(err => console.log(err));
+}
+
+document.querySelector("form").addEventListener("submit", function(event) {
+  event.preventDefault();
+  sendMail(); 
+});
+
 
 (function() {
   "use strict";
-
-  /**
-   * Easy selector helper function
-   */
   const select = (el, all = false) => {
     el = el.trim()
     if (all) {
@@ -21,9 +48,7 @@
     }
   }
 
-  /**
-   * Easy event listener function
-   */
+ 
   const on = (type, el, listener, all = false) => {
     let selectEl = select(el, all)
     if (selectEl) {
@@ -149,27 +174,9 @@
   /**
    * Testimonials slider
    */
-  new Swiper('.testimonials-carousel', {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
-  });
+
 
   new Swiper('.events-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
     slidesPerView: 'auto',
     pagination: {
       el: '.swiper-pagination',
